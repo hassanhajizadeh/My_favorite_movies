@@ -1,0 +1,289 @@
+:root {
+    --background-color: #0D0D0D;   /* Almost black */
+    --text-primary: #FFFFFF;       /* Pure white */
+    --accent-green: #00FF85;       /* Neon green */
+    --accent-blue: #1E90FF;        /* Electric blue */
+    --hover-pink: #FF0099;         /* Vivid pink */
+}
+/*----------------------------------------*/
+::-webkit-scrollbar {
+    width: 8px;             /* vertical scrollbar width */
+    height: 8px;            /* horizontal scrollbar height */
+  }
+  
+  /* Track (background of scrollbar) */
+  ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 10px;
+  }
+  
+  /* Handle (draggable part) */
+  ::-webkit-scrollbar-thumb {
+    background: var(--accent-green);    /* Neon green */
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--hover-pink);    /* Pink on hover */
+  }
+/*---------------------------------------------*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    position: relative;
+    font-family: Poppins;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+}
+
+nav{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    background-color: var(--accent-blue);
+}
+
+#menu {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+#menu li{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    cursor: pointer;
+    color: var(--background-color);
+    letter-spacing: 1px;
+    padding: 0px 10px;
+}
+#menu li:hover {
+    background-color: var(--hover-pink);
+    color: white;
+}
+#menu li.active{
+    transition: .1s ease-in color;
+    color: var(--text-primary);
+    background-color: var(--background-color);
+}
+
+.search {
+    position: relative;
+}
+
+#search-bar{
+    position: relative;
+    background-color: RGB(24, 49, 83);
+    height: 35px;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    border-radius: 0rem 1rem 0rem 0rem;
+}
+#search{
+    width: 310px;
+    border: none;
+    outline: none;
+    padding: 0px 0px 0px 10px;
+    font-family: inherit;
+    background-color: transparent;
+    color: var(--text-primary);
+}
+
+#search-bar button{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    height: 100%;
+    padding: 0px 10px 0px 3px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+}
+#search-bar button i{
+    color: var(--text-primary);
+}
+#search-bar button:hover > i {
+    color: var(--hover-pink);
+}
+
+#search-suggestion{
+    position: absolute;
+    max-height: 450px;
+    width: 350px;
+    border-radius: 0rem 0rem 1rem 1rem;
+    background-color: #1a1a1a;
+    z-index: 1;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.search-item{
+    display: flex;
+    padding: 0px 0px 0px 10px;
+    width: 100%;
+    min-height: 150px;
+    justify-content: space-between;
+    align-items: center;
+    text-align: justify;
+    border-top: 1px solid var(--accent-green);
+    cursor: pointer;
+    transition: .3s ease background;
+}
+
+.search-item:hover{
+    background-color: var(--hover-pink);
+}
+.search-item img{
+    margin-left: 5px;
+}
+
+
+/*-------------------------------------------------------------------------------------------*/
+
+#item-container{
+    display: grid;
+    grid-template-areas: 'item item item item';
+    padding: 20px 10px;
+    min-height: 80vh;
+}
+
+.item{
+    position: relative;
+    height: 480px;
+    width: 280px;
+    overflow: hidden;
+    border-radius: .7rem;
+    background-color:RGB(24, 49, 83);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+    cursor: pointer;
+    text-align: center;
+}
+.item:hover{
+    background-color: var(--hover-pink);
+    transition: 0.7s ease background-color;
+}
+
+.movie-overview{
+    position: absolute;
+    background-color: var(--text-primary);
+    color: var(--background-color);
+    padding: 5px 10px;
+    bottom: -200%;
+    transition: .5s ease all;
+    text-align: left;
+}
+.item:hover > .movie-overview{
+    bottom: 0;
+
+}
+
+.item button{
+    background-color: transparent;
+    border: none;
+}
+
+.item button i{
+    color : var(--accent-blue);
+}
+.item button i:hover{
+    color: var(--accent-green);
+}
+.movie-rating{
+    position: absolute;
+    top:0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 2rem 0rem 2rem 2rem;
+    background: var(--accent-blue);
+}
+.item img{
+    border-radius: .5rem;
+    margin-bottom: 5px;
+}
+/*-----------------------------------------------------*/
+
+#buttons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+#buttons button{
+    height: 50px;
+    width: 100px;
+    margin: 10px;
+    border-radius: .5rem;
+    border: none;
+    font-family: inherit;
+    font-size: 15pt;
+    background: RGB(24, 49, 83);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: .3s ease all;
+}
+#buttons button:hover{
+    background:var(--hover-pink);
+}
+#buttons button:active{
+    transform: scale(.98);
+}
+
+
+/*------------------------------------------------------*/
+
+#alert {
+    position: sticky;
+    bottom:10px;
+    left: 10px;
+    min-width: 300px;
+    max-width: 500px;
+    min-height: 80px;
+    border-radius: 1rem;
+    border-left:10px solid yellow ;
+    background-color: #1a1a1a;
+    color: var(--text-primary);
+    padding: 5px 40px 10px 10px;
+    transition: .5s ease all;
+    transform: translateX(-400%);
+}
+
+#alert span{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20pt;
+    cursor: pointer;
+}
+#alert p{
+    display: inline;
+}
+
+#alert span:hover{
+    color: var(--hover-pink) ;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>My Favorite Movies</title>
+</head>
+<body>
+    <nav>
+        <ul id="menu">
+            <li onclick="show_discover()" class="active">Discover</li>
+            <li onclick="show_top_rated()">Top Rated</li>
+            <li onclick="show_upcoming()">Up Coming</li>
+        </ul>
+        <div class="search">
+            <div id="search-bar">
+                <input type="text" id="search" autocomplete="off" onblur="hide_suggestions()" oninput="get_suggestions(this.value.trim())" onfocus="show_suggestions()">
+                <button onclick="show_suggestions_in_items()"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
+            </div>
+            <div id="search-suggestion"></div>
+        </div>
+    </nav>
+    <div id="item-container"></div>
+    <div id="buttons">
+        <button onclick="Back()">Back</button>
+        <button onclick="Next()">Next</button>
+    </div>
+    <div class="alert warning" id="alert">
+        <span class="close-btn" onclick="this.parentElement.style.transform='translateX(-400%)';">&times;</span>
+        <strong>Notice:</strong> <p id="alert-message"></p>
+    </div>      
+    <script src="script.js"></script>
+</body>
+</html>
+
