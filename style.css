@@ -44,6 +44,7 @@ body{
 }
 
 nav{
+    position: relative;
     height: 50px;
     width: 100%;
     display: flex;
@@ -51,6 +52,7 @@ nav{
     align-items: center;
     padding: 0px 20px;
     background-color: var(--accent-blue);
+    z-index: 3;
 }
 
 #menu {
@@ -76,6 +78,52 @@ nav{
     transition: .1s ease-in color;
     color: var(--text-primary);
     background-color: var(--background-color);
+}
+
+#ham-btn{
+    position: fixed ;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+    bottom : 10px;
+    right: 10px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 3px solid var(--accent-blue);
+    z-index: 4;
+    cursor: pointer;
+}
+
+.open{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 3;
+}
+.open li{
+    height: 50px;
+    width: 100%;
+    color: white !important;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #1e8fff7a;
+
+}
+
+.line{
+    height: 3px;
+    width: 35px;
+    background-color: var(--accent-blue);
+    border-radius: 3px;
+    transition: .3s ease all;
 }
 
 .search {
@@ -155,9 +203,10 @@ nav{
 
 /*-------------------------------------------------------------------------------------------*/
 
-#item-container{
+#item-container {
     display: grid;
-    grid-template-areas: 'item item item item';
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 20px;
     padding: 20px 10px;
     min-height: 80vh;
 }
@@ -175,12 +224,7 @@ nav{
     align-items: center;
     justify-content: space-between;
     margin: 20px;
-    cursor: pointer;
     text-align: center;
-}
-.item:hover{
-    background-color: var(--hover-pink);
-    transition: 0.7s ease background-color;
 }
 
 .movie-overview{
@@ -198,16 +242,28 @@ nav{
 }
 
 .item button{
+    position: absolute;
+    top:20px;
+    left: 10px;
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 .item button i{
     color : var(--accent-blue);
 }
 .item button i:hover{
-    color: var(--accent-green);
+    color: var(--hover-pink);
 }
+
+.item button i.active-favorite{
+    color: var(--hover-pink) ;
+}
+.item button i.deactive-favorite{
+    color: var(--accent-blue);
+}
+
 .movie-rating{
     position: absolute;
     top:0;
@@ -253,7 +309,33 @@ nav{
 #buttons button:active{
     transform: scale(.98);
 }
+/*------------------------------------------------------*/
+.loading{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40pt;
+    animation: loading 5s infinite forwards;
+}
 
+@keyframes loading {
+    0%,100%{
+        color: white;
+    }
+    20%{
+        color: #FF0099;
+    }
+    40%{
+        color: #00FF85;
+    }
+    60%{
+        color: #1E90FF;
+    }
+    80%{
+        color: #FF0099;
+    }
+}
 
 /*------------------------------------------------------*/
 
@@ -286,4 +368,42 @@ nav{
 
 #alert span:hover{
     color: var(--hover-pink) ;
+}
+
+
+/* --------------------------------------------------- */
+
+@media only screen and (max-width:830px){
+    nav{
+        justify-content: center;
+        padding: 0;
+    }
+    #menu{
+        display: none;
+    }
+    #ham-btn{
+        display: flex;
+    }
+    #search-bar{
+        width: 90vw;
+        margin: 0;
+    }
+    #search{
+        width: calc(90vw - 50px);
+    }
+    #search-suggestion{
+        width: 90vw;
+        max-height: 250px;
+    }
+    .search-item{
+        text-align: left;
+    }
+    
+    #item-container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        
+    }
+    
 }

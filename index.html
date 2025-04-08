@@ -10,14 +10,20 @@
 </head>
 <body>
     <nav>
+        <div id="ham-btn">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
         <ul id="menu">
             <li onclick="show_discover()" class="active">Discover</li>
             <li onclick="show_top_rated()">Top Rated</li>
             <li onclick="show_upcoming()">Up Coming</li>
+            <li onclick="show_favorites()">Favorites</li>
         </ul>
         <div class="search">
             <div id="search-bar">
-                <input type="text" id="search" autocomplete="off" onblur="hide_suggestions()" oninput="get_suggestions(this.value.trim())" onfocus="show_suggestions()">
+                <input type="text" id="search" autocomplete="off" oninput="get_suggestions(this.value.trim())" onfocus="show_suggestions()">
                 <button onclick="show_suggestions_in_items()"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
             </div>
             <div id="search-suggestion"></div>
